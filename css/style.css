@@ -41,9 +41,10 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font: 16px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
-        "PingFang SC", "Hiragino Sans GB", system-ui, sans-serif;
-  /* 这些是继承型属性，只需在 body 上设一次（Lesson 3：text flows down） */
+  /* latin-first stack: this site is written in English, so no CJK face should win */
+  font: 16px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, system-ui, sans-serif;
+  /* these are inherited properties — set once on body (Lesson 3: text flows down) */
 }
 
 img { max-width: 100%; height: auto; display: block; }

@@ -1,14 +1,51 @@
 # images/ 需要放的图
 
 老师要求项目有 **四张图**（`project.html` 第 19 张 "Five pieces of text, four images"）。
-下面每一项都写清了**文件名**和**规格**，页面里已经按这些文件名引用好了 —— 把图放进来即可生效。
+下面每一项都写清了**文件名**和**规格**，页面里已经按这些文件名引用好了。
 
 | 文件名 | 尺寸 | 格式 | 体积 | 用途 | 状态 |
 | --- | --- | --- | --- | --- | --- |
-| `og-image.jpg` | **1200 × 630** | JPG 或 PNG | **< 100 KB** | 分享链接时的预览图（Open Graph） | ⬜ 待做 |
-| `favicon-32.png` | **32 × 32** | **PNG** | — | 浏览器标签页图标 | ⬜ 待做 |
-| `apple-touch-icon.png` | **180 × 180** | **PNG** | — | 手机主屏图标 | ⬜ 待做 |
-| `favicon-192.png` | 192 × 192 | PNG | — | Android（**可选**，老师标注非必需） | ⬜ 可选 |
+| `og-image.jpg` | **1200 × 630** | JPEG | **< 100 KB** | 分享链接时的预览图（Open Graph） | ✅ **已完成**（88.9 KB） |
+| `favicon-32.png` | **32 × 32** | **PNG** | — | 浏览器标签页图标 | ✅ **已完成** |
+| `apple-touch-icon.png` | **180 × 180** | **PNG** | — | 手机主屏图标 | ✅ **已完成** |
+| `favicon-192.png` | 192 × 192 | PNG | — | Android（**可选**，老师标注非必需） | ✅ 已做 |
+
+## 这四张图是怎么做的（可以写进答辩）
+
+都**不是用图像软件画的**，而是 HTML + CSS 排版 → 无头浏览器截图 → 降采样导出。
+这正是老师在第 14 张建议的做法（"build a 1200 × 630 `<div>`, then DevTools → Capture node screenshot"）。
+
+| 源文件 | 作用 |
+| --- | --- |
+| `og-source.html` | 1200 × 630 的 og 图画布，配色取自 `css/style.css` 的 CSS 变量 |
+| `icon-source.html` | 512 × 512 的图标方形，导出时按 2 倍渲染成 1024 母版，再往下缩 |
+
+导出命令（本机 Edge 无头模式）：
+
+```powershell
+# og 图：直接截 1200×630 视口
+msedge --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=1 `
+  --window-size=1200,630 --screenshot=og-shot.png "file:///.../images/og-source.html"
+
+# 图标：按 2 倍渲染，得到 1024×1024 母版
+msedge --headless=new --disable-gpu --hide-scrollbars --force-device-scale-factor=2 `
+  --window-size=512,512 --screenshot=icon-master-1024.png "file:///.../images/icon-source.html"
+```
+
+再用 Pillow 降采样（**先大后小，绝不把小图放大**）：
+
+```python
+from PIL import Image
+master = Image.open("icon-master-1024.png").convert("RGBA")
+for name, size in [("apple-touch-icon.png",180), ("favicon-192.png",192), ("favicon-32.png",32)]:
+    master.resize((size*4, size*4), Image.LANCZOS).resize((size, size), Image.LANCZOS).save(name)
+```
+
+### 图标为什么是「一个大写 S」
+
+因为老师要求 **32 × 32 下必须可读**。我实测比较了四种方案（64vh / 78vh / 88vh 字号，有 / 无底部色带），
+在**真实 32 px** 下放大观察后选定 **88vh 字号、不加底部色带** —— 单一字母最大最清楚，
+加色带反而压缩字母空间、增加噪点。**这是量过之后改的，不是一上来就定下的。**
 
 另外答辩要交**两张截图**（不是放在网站里的文件，是交给课程平台的）：
 

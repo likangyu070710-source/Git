@@ -1,0 +1,23 @@
+# ---- 操作系统 ----
+Thumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+# ---- 编辑器 ----
+.vscode/*
+!.vscode/settings.json
+.idea/
+*.swp
+
+# ---- 临时与日志 ----
+*.log
+*.tmp
+.cache/
+
+# ---- 密钥（切勿提交）----
+.env
+.env.local
+.token
+*.pem
+*.key

@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>校园与周边 — 新生在儋州怎么活下来</title>
+<meta name="description" content="食堂、超市、快递点、打印店和去市区的交通：日常要用的地方，按类型筛选着看。">
+
+<!-- ===== Open Graph / 分享预览 =====
+     ⚠️ TODO 上线后把 YOUR-ADDRESS 换成你的真实地址 -->
+<meta property="og:title" content="校园与周边 — 新生在儋州怎么活下来">
+<meta property="og:description" content="食堂、超市、快递、打印店和交通：日常要用的地方，按类型筛选着看。">
+<meta property="og:image" content="https://YOUR-ADDRESS/images/og-image.jpg">
+<meta property="og:url" content="https://YOUR-ADDRESS/campus.html">
+<meta property="og:type" content="article">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" href="images/favicon-32.png" sizes="32x32">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<link rel="stylesheet" href="css/style.css">
+<script>try{if(localStorage.getItem("danzhou-theme")==="dark")document.documentElement.setAttribute("data-theme","dark")}catch(e){}</script>
+</head>
+<body>
+
+<a class="skip" href="#main">跳到主要内容</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html">儋州<span>活下来</span></a>
+    <nav class="site-nav" aria-label="主导航">
+      <ul>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="arrive.html">报到</a></li>
+        <li><a href="campus.html" aria-current="page">校园</a></li>
+        <li><a href="danzhou.html">儋州</a></li>
+      </ul>
+    </nav>
+    <button class="theme-toggle" type="button" aria-pressed="false">☾ 深色</button>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <p class="kicker">安顿之后</p>
+    <h1>校园与周边</h1>
+
+    <!-- TODO(你写)：2–3 句概述你在校园里最常走的路线（宿舍 → 食堂 → 教学楼）。 -->
+    <p>安顿下来之后，你每天真正会用到的地方其实就那几个。下面按类型列出来，点按钮筛选。</p>
+
+    <section aria-labelledby="places">
+      <h2 id="places">日常地点</h2>
+
+      <!-- 交互组件：js/filter.js。老师要求"至少一处会响应用户"的就是这里。 -->
+      <div class="filters" role="group" aria-label="按类型筛选地点">
+        <button type="button" data-filter="all" aria-pressed="true">全部</button>
+        <button type="button" data-filter="food" aria-pressed="false">吃饭</button>
+        <button type="button" data-filter="shop" aria-pressed="false">买东西</button>
+        <button type="button" data-filter="service" aria-pressed="false">办事</button>
+        <button type="button" data-filter="move" aria-pressed="false">出行</button>
+      </div>
+      <p class="filter-status" role="status" aria-live="polite">显示全部地点</p>
+
+      <div class="grid" data-filter-list>
+
+        <!-- TODO(你写)：下面每张卡片换成你学校真实存在的地方。
+             data-cat 决定它属于哪个筛选类别，可以同时给两个，中间用空格：
+             <article class="card" data-cat="food shop">
+             名称、位置、营业时间、你的一句话建议 —— 都换成真的。
+             不确定营业时间的，就把那一行删掉，不要编。 -->
+
+        <article class="card" data-cat="food">
+          <h3>第一食堂</h3>
+          <p><strong>位置：</strong>宿舍区步行约 5 分钟</p>
+          <p><strong>什么时候去：</strong>避开 12:00–12:30 的高峰</p>
+          <p><strong>建议：</strong>想省钱就在二楼吃，一楼贵一点但出餐快。</p>
+        </article>
+
+        <article class="card" data-cat="food">
+          <h3>第二食堂 / 清真窗口</h3>
+          <p><strong>位置：</strong>教学区一侧</p>
+          <p><strong>建议：</strong>课间只有 40 分钟的时候来这里，比回宿舍区近。</p>
+        </article>
+
+        <article class="card" data-cat="shop">
+          <h3>校内超市</h3>
+          <p><strong>买什么：</strong>水、泡面、纸巾、洗衣液这类急用的</p>
+          <p><strong>建议：</strong>单价通常比校外贵一点，囤货去市区或网购。</p>
+        </article>
+
+        <article class="card" data-cat="service">
+          <h3>快递点</h3>
+          <p><strong>要带：</strong>手机取件码，有的点要出示学生证</p>
+          <p><strong>建议：</strong>开学季排队很久，尽量错开傍晚。大件提前问能不能代收。</p>
+        </article>
+
+        <article class="card" data-cat="service">
+          <h3>打印店</h3>
+          <p><strong>办什么：</strong>打印讲义、复印证件、装订</p>
+          <p><strong>建议：</strong>报到那几天人最多，证件复印件最好提前在家里打好。</p>
+        </article>
+
+        <article class="card" data-cat="move">
+          <h3>去市区的车</h3>
+          <p><strong>怎么走：</strong>校门口公交 / 打车，两种都写清楚上车点</p>
+          <p><strong>建议：</strong>把常用路线的首末班时间记一次，天黑后班次会变少。</p>
+        </article>
+
+        <article class="card" data-cat="food shop">
+          <h3>校外小吃街</h3>
+          <p><strong>位置：</strong>校门出去步行可达</p>
+          <p><strong>建议：</strong>晚自习后最热闹；注意卫生，选人多的摊。</p>
+        </article>
+
+      </div>
+    </section>
+
+    <section aria-labelledby="tips">
+      <h2 id="tips">在校园里省时间的几条</h2>
+      <!-- TODO(你写)：替换成你自己的经验。 -->
+      <ul>
+        <li>课表存成图片放手机相册第一张，比每次打开 App 快。</li>
+        <li>把宿舍、教学楼、食堂在地图上先各标一个点，第一周不会迷路。</li>
+        <li>雨具常备——这边的雨来得快，天气预报不一定来得及看。</li>
+      </ul>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>由一名 BiUH 在读学生编写 · 2026</p>
+    <p>内容为个人经验，非学校官方信息。营业时间与班次请以现场为准。</p>
+  </div>
+</footer>
+
+<script src="js/theme.js"></script>
+<script src="js/filter.js"></script>
+</body>
+</html>

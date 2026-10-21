@@ -30,9 +30,10 @@
       });
 
       if (status) {
+        var noun = shown === 1 ? " place" : " places";
         status.textContent = cat === "all"
-          ? "显示全部 " + shown + " 个地点"
-          : "筛选：" + labelOf(cat) + "，" + shown + " 个地点";
+          ? "Showing all " + shown + " places"
+          : "Showing " + shown + noun + " in " + labelOf(cat);
       }
     }
 

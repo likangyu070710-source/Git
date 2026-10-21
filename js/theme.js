@@ -29,7 +29,7 @@
 
     function label() {
       var dark = root.getAttribute("data-theme") === "dark";
-      btn.textContent = dark ? "☀ 浅色" : "☾ 深色";
+      btn.textContent = dark ? "☀ Light" : "☾ Dark";
       btn.setAttribute("aria-pressed", dark ? "true" : "false");
     }
 

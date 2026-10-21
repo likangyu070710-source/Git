@@ -250,6 +250,30 @@ pre code { background: none; padding: 0; color: inherit; }
 
 .filter-status { color: var(--dim); font-size: .92rem; margin: 0 0 1rem; }
 
+/* 照片：图 + 说明。说明用 .credit 单独一行写来源 */
+.photo { margin: 2rem 0; }
+.photo img {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.photo figcaption {
+  color: var(--dim);
+  font-size: .9rem;
+  margin-top: .65rem;
+  max-width: 46em;
+}
+.photo .credit { display: block; font-size: .82rem; }
+
+/* 两张并排，窄屏自动叠成一列 */
+.photo-pair {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin: 2rem 0;
+}
+.photo-pair .photo { margin: 0; }
+
 /* 主题切换按钮 */
 .theme-toggle {
   font: inherit;

@@ -6,81 +6,82 @@
 <!--
   ============================================================================
   This file is NOT part of the website. It is the source for images/og-image.jpg,
-  made the way the course suggests: build a 1200 × 630 box in HTML and CSS,
-  then screenshot it.
+  built the way the course suggests: lay it out in HTML and CSS, then screenshot it.
 
-  How to export it:
+  HOW TO EXPORT
     1. open this file in a browser
-    2. DevTools (F12) → Ctrl+Shift+P (Cmd+Shift+P on macOS)
-    3. type "Capture node screenshot"  → click the .canvas element first
-    4. save the result as images/og-image.jpg
+    2. DevTools (F12) → Ctrl+Shift+P  (Cmd+Shift+P on macOS)
+    3. type "Capture node screenshot" → click the .canvas element first
+    4. save as images/og-image.jpg, then check it is under 100 KB
 
-  Specs it must meet (from the project deck):
-    1200 × 630 px exactly · under 100 KB · title not touching the edges
+  SPECS IT MUST MEET (from the project deck, slide 12)
+    · 1200 × 630 px exactly
+    · under 100 KB
+    · the title must not touch the edges — some apps crop the sides
+
+  WHY THIS LAYOUT (slide 12: "the title, big · one line on what it is · one visual")
+    · left column  = title + one line describing the site
+    · right column = one visual: the same "S" mark used by favicon-32.png and
+      apple-touch-icon.png. Slide 16 asks for "the same colours, the same letter
+      or mark" across the poster, the app icon and the favicon — so the letter
+      here is deliberately the same one as in icon-source.html.
+    · everything sits inside a 64-80 px margin so cropped edges cannot eat text
   ============================================================================
 -->
 <style>
-  /* Same palette as the site, so the poster and the pages agree */
+  /* Same palette as the site, so the poster and the pages always agree */
   :root {
-    --paper: #fbfaf7;
-    --ink: #12141a;
-    --dim: #5b6270;
+    --paper:  #fbfaf7;
+    --ink:    #12141a;
+    --dim:    #5b6270;
     --accent: #c2410c;
   }
 
-  body {
-    margin: 0;
-    background: #8b8b8b;              /* grey surround so you can see the edges */
-    display: grid;
-    place-items: center;
-    min-height: 100vh;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                 "Helvetica Neue", Arial, system-ui, sans-serif;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html, body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #8b8b8b;              /* grey surround: makes the edges visible */
   }
 
-  /* ---- the actual 1200 × 630 canvas ---- */
+  /* ---- the 1200 × 630 canvas that gets screenshotted ---- */
   .canvas {
     width: 1200px;
     height: 630px;
+    display: flex;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ---- left: words ---- */
+  .left {
+    width: 63%;
     background: var(--paper);
     color: var(--ink);
-    position: relative;
-    overflow: hidden;
-    display: grid;
-    align-content: center;            /* vertical centring */
-    padding: 0 96px;
+    padding: 64px 40px 64px 80px;     /* 80 px on the crop side */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
 
-  /* decorative: a soft warm wash in one corner, no image file needed */
-  .canvas::before {
-    content: "";
-    position: absolute;
-    right: -160px;
-    top: -160px;
-    width: 560px;
-    height: 560px;
-    border-radius: 50%;
-    background: var(--accent);
-    opacity: .07;
-  }
-  .canvas::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 14px;
-    background: var(--accent);
-  }
-
-  /* A title long enough to be cut off if it hugged the edge — this one does not. */
-  .title {
-    font-size: 104px;
-    line-height: 1.02;
-    letter-spacing: -0.03em;
+  .kicker {
+    font-size: 24px;
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--accent);
     font-weight: 700;
-    margin: 0 0 28px;
-    max-width: 900px;
+    margin-bottom: 30px;
+  }
+
+  .title {
+    font-size: 92px;
+    line-height: 1;
+    letter-spacing: -.035em;
+    font-weight: 700;
   }
   .title em {
     font-style: normal;
@@ -88,38 +89,45 @@
   }
 
   .sub {
-    font-size: 38px;
-    line-height: 1.35;
+    font-size: 28px;
+    line-height: 1.42;
     color: var(--dim);
-    margin: 0;
-    max-width: 820px;
+    margin-top: 30px;
+    max-width: 560px;
   }
 
-  .foot {
-    position: absolute;
-    left: 96px;
-    bottom: 56px;
-    font-size: 26px;
-    color: var(--dim);
-    letter-spacing: .01em;
+  /* ---- right: one visual, the shared "S" mark ---- */
+  .right {
+    width: 37%;
+    background: var(--accent);
+    display: grid;
+    place-items: center;
+    position: relative;
   }
-  .foot strong { color: var(--ink); }
-
-  /* guides: must stay inside the dashed safe area (teacher: "keep the words inside it") */
-  .safe-area {
-    position: absolute;
-    inset: 48px;
-    border: 2px dashed rgba(194, 65, 12, .35);
-    pointer-events: none;
+  .mark {
+    font-size: 300px;
+    line-height: .78;
+    font-weight: 700;
+    letter-spacing: -.05em;
+    color: var(--paper);
+    transform: translateY(-4px);
   }
 </style>
 </head>
-<body data-export="false">
+<body>
 
   <div class="canvas" data-og-canvas>
-    <p class="title">How to <em>Survive</em><br>Danzhou</p>
-    <p class="sub">A survival guide for new students — arriving, campus life, food, and getting around.</p>
-    <p class="foot"><strong>SurviveDanzhou</strong> · written by a student, for the students arriving next year</p>
+
+    <div class="left">
+      <p class="kicker">BiUH · Web Technologies</p>
+      <p class="title">How to<br><em>Survive</em><br>Danzhou</p>
+      <p class="sub">A student's guide to the first month — and the rest of the year.</p>
+    </div>
+
+    <div class="right">
+      <span class="mark">S</span>
+    </div>
+
   </div>
 
 </body>

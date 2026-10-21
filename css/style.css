@@ -130,6 +130,15 @@ main { padding-block: 2.5rem 4rem; }
   font-size: .92rem;
 }
 
+/* 版权与出处：比页脚正文再小一号，但保持可读 */
+.fineprint {
+  font-size: .82rem;
+  line-height: 1.65;
+  opacity: .9;
+  margin: .9rem 0 0;
+  max-width: 52em;
+}
+
 /* 两栏：主内容 + 侧栏 */
 .with-aside {
   display: grid;
